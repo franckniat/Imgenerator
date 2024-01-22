@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useRef, useState } from "react";
 import OpenAI from "openai";
 import {NextSeo} from 'next-seo';
+import { env } from "@/env";
 
 type chatHistory = {
   type: 'user' | 'ai',
@@ -15,10 +16,9 @@ export default function Home() {
   const [textInput, setTextInput] = useState<string>("");
   const [chatHistory, setChatHistory] = useState<chatHistory[]>([]);
 
-  const request = useRef<HTMLDivElement>(null);
   const image = useRef<HTMLImageElement>(null);
   const openai = new OpenAI({
-    apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
+    apiKey: env.NEXT_PUBLIC_OPENAI_API_KEY,
     dangerouslyAllowBrowser: true
   });
 
@@ -35,7 +35,8 @@ export default function Home() {
         { 
           type: 'ai', 
           text: <>
-                  <Image ref={image} src={response.data[0].url ? response.data[0].url : ""} alt="Generated Image" width={400} height={400} />
+                  <Image ref={image} src={response.data[0].url ? response.data[0].url : ""} alt="Generated Image" width={400} height={400} 
+                  />
                 </>
         }
       ]);
@@ -43,7 +44,6 @@ export default function Home() {
       console.log(error);
     }
     setisLoading(false);
-
   }
   return (
     <>
