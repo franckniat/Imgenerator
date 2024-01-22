@@ -35,7 +35,7 @@ export default function Home() {
         { 
           type: 'ai', 
           text: <>
-                  <Image ref={image} src={response.data[0].url ? response.data[0].url : ""} alt="Generated Image" width={400} height={400} 
+                  <img ref={image} src={response.data[0].url ? response.data[0].url : ""} alt="Generated Image" width={400} height={400} 
                   />
                 </>
         }
@@ -64,7 +64,7 @@ export default function Home() {
     />
     <Navigation/>
     <main className="max-w-[500px] mx-auto px-3">
-        <section className="pt-[75px] pb-[120px]">
+        <section className="pt-[75px] pb-[130px]">
           <h1 className="text-lg my-5">Entrez du texte pour générer une image.</h1>
           
           <div>
