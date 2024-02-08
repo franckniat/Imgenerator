@@ -30,7 +30,7 @@ export default function Home() {
       setTextInput('');
       const response = await openai.images.generate({
         prompt: textInput,
-        size: "512x512"
+        size: "1024x1024"
       })
       setChatHistory([...chatHistory, 
         { 
